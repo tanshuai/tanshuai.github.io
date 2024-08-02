@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7364],{7364:function(e){e.exports=JSON.parse('{"main":[{"name":"Главная","url":"/"},{"name":"Блог","url":"/blog"},{"name":"Ещё","url":"","hasChildren":true,"children":[{"name":"Категории","url":"/categories"},{"name":"Теги","url":"/tags"}]},{"name":"О нас","url":"/about"}],"footer":[]}')}}]);

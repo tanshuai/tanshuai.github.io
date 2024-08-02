@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2040],{2040:function(e){e.exports=JSON.parse('{"main":[{"name":"홈","url":"/"},{"name":"블로그","url":"/blog"},{"name":"더보기","url":"","hasChildren":true,"children":[{"name":"카테고리","url":"/categories"},{"name":"태그","url":"/tags"}]},{"name":"소개","url":"/about"}],"footer":[]}')}}]);

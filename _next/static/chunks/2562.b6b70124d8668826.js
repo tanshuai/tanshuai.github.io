@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2562],{2562:function(e){e.exports=JSON.parse('{"main":[{"name":"In\xedcio","url":"/"},{"name":"Blog","url":"/blog"},{"name":"Mais","url":"","hasChildren":true,"children":[{"name":"Categorias","url":"/categories"},{"name":"Tags","url":"/tags"}]},{"name":"Sobre","url":"/about"}],"footer":[]}')}}]);

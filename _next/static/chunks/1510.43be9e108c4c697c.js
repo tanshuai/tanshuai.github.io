@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1510],{1510:function(e){e.exports=JSON.parse('{"main":[{"name":"الرئيسية","url":"/"},{"name":"مدونة","url":"/blog"},{"name":"المزيد","url":"","hasChildren":true,"children":[{"name":"الفئات","url":"/categories"},{"name":"العلامات","url":"/tags"}]},{"name":"حول","url":"/about"}],"footer":[]}')}}]);

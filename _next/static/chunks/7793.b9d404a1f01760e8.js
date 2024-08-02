@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7793],{7793:function(e){e.exports=JSON.parse('{"main":[{"name":"หน้าแรก","url":"/"},{"name":"บล็อก","url":"/blog"},{"name":"เพิ่มเติม","url":"","hasChildren":true,"children":[{"name":"หมวดหมู่","url":"/categories"},{"name":"แท็ก","url":"/tags"}]},{"name":"เกี่ยวกับ","url":"/about"}],"footer":[]}')}}]);

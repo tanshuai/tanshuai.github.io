@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[936],{936:function(e){e.exports=JSON.parse('{"main":[{"name":"Koti","url":"/"},{"name":"Blogi","url":"/blog"},{"name":"Lis\xe4\xe4","url":"","hasChildren":true,"children":[{"name":"Kategoriat","url":"/categories"},{"name":"Tunnisteet","url":"/tags"}]},{"name":"Tietoa","url":"/about"}],"footer":[]}')}}]);

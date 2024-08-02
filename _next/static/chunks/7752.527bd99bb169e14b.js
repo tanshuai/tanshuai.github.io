@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7752],{7752:function(e){e.exports=JSON.parse('{"main":[{"name":"首頁","url":"/"},{"name":"博客","url":"/blog"},{"name":"更多","url":"","hasChildren":true,"children":[{"name":"分類","url":"/categories"},{"name":"標籤","url":"/tags"}]},{"name":"關於","url":"/about"}],"footer":[]}')}}]);

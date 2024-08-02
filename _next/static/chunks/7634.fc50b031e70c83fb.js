@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7634],{7634:function(e){e.exports=JSON.parse('{"main":[{"name":"ホームページ","url":"/"},{"name":"ブログ","url":"/blog"},{"name":"もっと見る","url":"","hasChildren":true,"children":[{"name":"カテゴリー","url":"/categories"},{"name":"タグ","url":"/tags"}]},{"name":"概要","url":"/about"}],"footer":[]}')}}]);
