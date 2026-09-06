@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5389],{5389:function(e){e.exports=JSON.parse('{"main":[{"name":"Home","url":"/"},{"name":"Blog","url":"/blog"},{"name":"Meer","url":"","hasChildren":true,"children":[{"name":"Categorie\xebn","url":"/categories"},{"name":"Tags","url":"/tags"}]},{"name":"Over","url":"/about"}],"footer":[]}')}}]);

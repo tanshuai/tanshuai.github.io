@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4403],{4403:function(e){e.exports=JSON.parse('{"main":[{"name":"בית","url":"/"},{"name":"בלוג","url":"/blog"},{"name":"עוד","url":"","hasChildren":true,"children":[{"name":"קטגוריות","url":"/categories"},{"name":"תגיות","url":"/tags"}]},{"name":"אודות","url":"/about"}],"footer":[]}')}}]);
