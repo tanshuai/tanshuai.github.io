@@ -1,0 +1,14 @@
+# tanshuai.netlify.app: the Chinese profile in sites/netlify. Static files, no
+# build. The command is set so a framework Netlify detects (Jekyll, from
+# _config.yml) is never run.
+[build]
+  publish = "sites/netlify"
+  command = "echo 'Static site: nothing to build.'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
