@@ -2,17 +2,295 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>tanshuai.com</title>
-<link rel="canonical" href="https://tanshuai.com/">
-<meta http-equiv="refresh" content="0; url=https://tanshuai.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-  // This host only ever served a copy of tanshuai.com. Send every path to the
-  // same path on the real site; tanshuai.com's own redirect layer finishes the job.
-  location.replace("https://tanshuai.com" + location.pathname.replace(/\/$/, "") + location.search + location.hash);
+<title>Tan Shuai — engineering notebook: chips, systems and code</title>
+<meta name="description" content="Tan Shuai's engineering notebook: selected silicon, 20 granted patents and an index of technical notes, from full-custom ASICs to Git, Linux and AI.">
+<link rel="canonical" href="https://tanshuai.github.io/">
+<meta name="author" content="Tan Shuai">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fdfdfc">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111110">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="Tan Shuai" href="https://tanshuai.com/rss.xml">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Tan Shuai — engineering notebook">
+<meta property="og:title" content="Tan Shuai — engineering notebook">
+<meta property="og:description" content="Selected silicon, 20 granted patents and an index of technical notes, from full-custom ASICs to Git, Linux and AI.">
+<meta property="og:url" content="https://tanshuai.github.io/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tanshuai.github.io/avatar.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Tan Shuai">
+<meta property="profile:first_name" content="Shuai">
+<meta property="profile:last_name" content="Tan">
+<meta property="profile:username" content="tanshuai">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@tanshuai">
+<meta name="twitter:creator" content="@tanshuai">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://tanshuai.github.io/",
+  "url": "https://tanshuai.github.io/",
+  "name": "Tan Shuai — engineering notebook",
+  "inLanguage": "en",
+  "dateModified": "2026-10-22",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://tanshuai.com/about#person",
+    "name": "Tan Shuai",
+    "givenName": "Shuai",
+    "familyName": "Tan",
+    "alternateName": ["谭帅", "譚帥", "Shuai Tan"],
+    "url": "https://tanshuai.com/about",
+    "image": "https://tanshuai.com/avatar.png",
+    "jobTitle": "Chip and systems engineer, founder",
+    "description": "Chip and systems engineer and founder with more than twenty years across advanced-process silicon, hardware platforms, system software and AI agent products.",
+    "disambiguatingDescription": "Co-Founder and CEO of Chipchain Technologies; founding member of MicroBT (WhatsMiner); 20 granted patents in the United States and China.",
+    "worksFor": { "@type": "Organization", "name": "Chipchain Technologies", "alternateName": "芯行科技" },
+    "alumniOf": [
+      { "@type": "Organization", "name": "MicroBT", "alternateName": "比特微", "brand": { "@type": "Brand", "name": "WhatsMiner" } },
+      { "@type": "Organization", "name": "Zeeis Technologies", "alternateName": "之士科技" },
+      { "@type": "Organization", "name": "Vimicro", "alternateName": "中星微电子", "sameAs": "https://www.wikidata.org/wiki/Q7931283" },
+      { "@type": "Organization", "name": "Q-Net Technologies", "alternateName": "秦通" }
+    ],
+    "knowsAbout": ["Semiconductors", "Chip architecture", "System software", "Storage and file systems", "Firmware", "AI agent devices"],
+    "knowsLanguage": ["en", "cmn", "yue"],
+    "sameAs": [
+      "https://x.com/tanshuai",
+      "https://www.linkedin.com/in/tanshuai",
+      "https://github.com/tanshuai",
+      "https://www.tanshuai.net/about",
+      "https://tanshuai.github.io/",
+      "https://tanshuai.vercel.app/",
+      "https://tanshuai.netlify.app/"
+    ]
+  }
+}
 </script>
+<style>
+:root {
+  color-scheme: light dark;
+  --paper: #fdfdfc;
+  --sunken: #f1f0ef;
+  --ink: #21201c;
+  --ink-2: #3f3e3a;
+  --ink-3: #63635e;
+  --rule: #e2e1de;
+  --rule-strong: #cfceca;
+  --accent: #b42d1c;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #111110;
+    --sunken: #222221;
+    --ink: #eeeeec;
+    --ink-2: #d5d3cd;
+    --ink-3: #b5b3ad;
+    --rule: #31312e;
+    --rule-strong: #494844;
+    --accent: #ef6a52;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--sans); }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+code { font: 0.875em/1 var(--mono); background: var(--sunken); padding: 0.1em 0.3em; border-radius: 3px; }
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 max(1rem, 4.5vw); }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; padding-block: 1.25rem; border-bottom: 1px solid var(--rule); font: 500 0.8125rem/1.4 var(--mono); color: var(--ink-3); }
+.bar img { width: 1.5rem; height: 1.5rem; }
+.masthead { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end; padding-block: clamp(2.5rem, 8vw, 5rem) 1.75rem; }
+h1 { margin: 0; font-size: clamp(2.75rem, 1.9rem + 4vw, 4.5rem); line-height: 0.95; letter-spacing: -0.03em; }
+.names { margin: 0.875rem 0 0; color: var(--ink-3); }
+.tagline { margin: 0.75rem 0 0; max-width: 32em; color: var(--ink-2); font-size: clamp(1.1875rem, 1.12rem + 0.3vw, 1.3125rem); line-height: 1.5; }
+.portrait { width: clamp(4.5rem, 3rem + 6vw, 7rem); height: auto; aspect-ratio: 1; border-radius: 50%; background: var(--sunken); }
+h2 { margin: 3rem 0 0.75rem; padding-top: 0.875rem; border-top: 1px solid var(--rule-strong); font: 600 0.8125rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+h3 { margin: 1.75rem 0 0.25rem; font-size: 1.0625rem; }
+p { margin: 0 0 1rem; }
+ul { margin: 0; padding: 0; list-style: none; }
+.list > li { padding-block: 0.75rem; border-bottom: 1px solid var(--rule); }
+.list > li:last-child { border-bottom: 0; }
+.meta { display: block; margin-top: 0.15rem; font: 0.8125rem/1.4 var(--mono); color: var(--ink-3); }
+.note > a { font-weight: 600; }
+.note p { margin: 0.25rem 0 0; color: var(--ink-2); font-size: 0.9375rem; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.625rem 1.5rem; margin: 0; }
+dt { padding-top: 0.2rem; font: 600 0.8125rem/1.5 var(--mono); color: var(--ink-3); }
+dd { margin: 0; }
+footer { margin-top: 4rem; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 0.875rem; }
+@media (max-width: 30rem) {
+  dl { grid-template-columns: 1fr; gap: 0; }
+  dd { margin-bottom: 0.75rem; }
+}
+</style>
 </head>
 <body>
-<p>This site has moved to <a href="https://tanshuai.com/">tanshuai.com</a>.</p>
+<div class="wrap">
+<header class="bar">
+  <img src="/seal.svg" width="24" height="24" alt="">
+  <span>tanshuai.github.io</span>
+  <span aria-hidden="true">/</span>
+  <span>engineering notebook</span>
+</header>
+<main>
+  <div class="masthead">
+    <div>
+      <h1>Tan Shuai</h1>
+      <p class="names"><span lang="zh-Hans">谭帅</span> · <span lang="zh-Hant">譚帥</span> · Tán Shuài</p>
+      <p class="tagline">Chip and systems engineer, founder. I build the chips, machines and code that AI runs on.</p>
+    </div>
+    <img class="portrait" src="/avatar-384.webp" width="384" height="384" alt="Portrait of Tan Shuai">
+  </div>
+  <p>This is my engineering notebook: the stack I work on, the technical notes I have written along the way, the silicon I helped ship and the patents behind it. Every note links to its full text on <a href="https://tanshuai.com/">tanshuai.com</a>.</p>
+
+  <section aria-labelledby="stack">
+    <h2 id="stack">The stack</h2>
+    <dl>
+      <dt>Silicon</dt>
+      <dd>Full-custom and SoC design: a Bitcoin mining ASIC at MicroBT; mobile multimedia, audio and video processors at Vimicro.</dd>
+      <dt>Hardware</dt>
+      <dd>The platforms and test equipment around the chips, such as what a low-cost DDR3, DDR4, LPDDR3 and LPDDR4 memory tester needs.</dd>
+      <dt>Software</dt>
+      <dd>Storage and file systems, firmware update and communication protocols: the fields my patents cover.</dd>
+      <dt>AI</dt>
+      <dd>The AI agent products that now run on that stack; lately, a blind test of which model describes photos best.</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="notes">
+    <h2 id="notes">Technical notes</h2>
+    <h3>Chips and hardware</h3>
+    <ul class="list">
+      <li class="note">
+        <a href="https://tanshuai.com/blog/ultra-low-cost-ddr3-ddr4-lpddr3-lpddr4-memory-test-system">Ultra Low-Cost DDR3, DDR4, LP-DDR3 &amp; LP-DDR4 Memory Test System</a>
+        <time class="meta" datetime="2024-06-01">June 2024</time>
+        <p>What a memory tester needs to cost a fraction of big ATE: 800 to 3200 MT/s, the four standards on one platform, a hardware pattern generator and accurate low-voltage power.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/full-custom-asic-design-secrets-bitcoin-cryptocurrency-mining">Full Custom ASIC Design Secrets for Bitcoin and Cryptocurrency Mining</a>
+        <time class="meta" datetime="2022-05-30">May 2022</time>
+        <p>A paper on the full-custom methods behind mining ASICs, from design technique and physical layout to verification, and how they decide power efficiency and hashrate.</p>
+      </li>
+    </ul>
+    <h3>AI</h3>
+    <ul class="list">
+      <li class="note">
+        <a href="https://tanshuai.com/blog/best-ai-model-photo-captioning-gpt-6-vs-claude-5-5">Best AI Model for Captioning and Tagging Photos: GPT-6 vs Claude 5.5 Blind Benchmark</a>
+        <time class="meta" datetime="2026-10-20">October 2026</time>
+        <p>Ten GPT-6 and Claude 5.5 configurations titled, captioned, keyworded and filed 50 real photos, scored blind: GPT-6.1 Sol 9.72 out of 10, Claude Opus 5.5 8.57, and what each costs at official API prices.</p>
+      </li>
+    </ul>
+    <h3>Git and developer tools</h3>
+    <ul class="list">
+      <li class="note">
+        <a href="https://tanshuai.com/blog/aws-codecommit-the-githubs-large-file-storage-git-lfs-free-alternative">AWS CodeCommit: The GitHub Large File Storage (Git LFS) Free Alternative</a>
+        <time class="meta" datetime="2022-02-09">February 2022</time>
+        <p>Where Git LFS gets expensive and awkward, and why CodeCommit can keep large files in plain Git instead.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/migrate-a-github-lfs-git-large-file-storage-repository-to-aws-codecommit">Migrate a GitHub LFS (Git Large File Storage) repository to AWS CodeCommit</a>
+        <time class="meta" datetime="2022-02-09">February 2022</time>
+        <p>The move step by step: a mirror clone, <code>git lfs migrate export</code> to fold the large files back into history, then <code>push --all</code>.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/reset-restore-all-subdirectories-of-git">Reset/Restore All subdirectories of Git</a>
+        <time class="meta" datetime="2021-09-22">September 2021</time>
+        <p>Two commands to put every subdirectory back as committed: <code>git clean -xfdf -- .</code>, then <code>git checkout HEAD -- .</code>.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/electron-build-tools-error-error-failed-to-run-choco-install-pywin32-yes">Electron Build Tools ERROR: Failed to run “choco install pywin32 --yes”</a>
+        <time class="meta" datetime="2021-09-08">September 2021</time>
+        <p>Why Electron's build tools cannot install pywin32 through Chocolatey on Windows (the package's download link is gone) and how to get past it.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/get-current-commit-id-of-git-and-update-to-package-json">Get current commit id of Git and update to package.json</a>
+        <time class="meta" datetime="2021-08-21">August 2021</time>
+        <p>Stamp the short commit hash into <code>package.json</code> from an npm <code>predev</code> script with <code>git rev-parse --short HEAD</code>.</p>
+      </li>
+    </ul>
+    <h3>Linux and macOS</h3>
+    <ul class="list">
+      <li class="note">
+        <a href="https://tanshuai.com/blog/convert-markdown-academic-paper-pdf-macos">Quickly Convert Markdown to Academic-Style Paper PDF on macOS</a>
+        <time class="meta" datetime="2022-03-03">March 2022</time>
+        <p>Pandoc and BasicTeX from Homebrew, a few lines of front matter and a single <code>pandoc</code> command.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/check-voltage-current-on-macos-for-power-adapter">Check Voltage &amp; Current on macOS for Power Adapter</a>
+        <time class="meta" datetime="2022-02-14">February 2022</time>
+        <p>A MacBook charger's voltage and current, read from Terminal with one <code>ioreg</code> command and no extra app.</p>
+      </li>
+      <li class="note">
+        <a href="https://tanshuai.com/blog/usr-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-on-ubuntu-20-04">/usr/bin/sudo must be owned by uid 0 and have the setuid bit set on Ubuntu 20.04</a>
+        <time class="meta" datetime="2021-10-08">October 2021</time>
+        <p>Getting <code>sudo</code> back: boot to rescue mode from the GRUB menu, then restore its mode with one <code>pkexec chmod</code>.</p>
+      </li>
+    </ul>
+    <p class="meta"><a href="https://tanshuai.com/blog">Every post on tanshuai.com</a> · <a href="https://tanshuai.com/rss.xml">RSS</a></p>
+  </section>
+
+  <section aria-labelledby="silicon">
+    <h2 id="silicon">Selected silicon</h2>
+    <ul class="list">
+      <li><strong>WhatsMiner Bitcoin mining ASIC</strong><span class="meta">MicroBT</span></li>
+      <li><strong>8-Series ARM926EJ-S mobile multimedia SoC</strong><span class="meta">Vimicro</span></li>
+      <li><strong>Mobile audio processors</strong><span class="meta">Vimicro</span></li>
+      <li><strong>Mobile video and camera processors</strong><span class="meta">Vimicro</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="patents">
+    <h2 id="patents">Patents</h2>
+    <p>20 granted in the United States and China, 18 of them authored by me and 2 developed under my leadership, in chip architecture, storage and file systems, firmware update and communication protocols. Two of them:</p>
+    <ul class="list">
+      <li>
+        <a href="https://patents.google.com/patent/US7441077B2">US 7,441,077 B2</a>: Device for transmitting data and method for the same
+        <span class="meta">Filed 2005 · granted 21 October 2008 · Vimicro</span>
+      </li>
+      <li>
+        <a href="https://patents.google.com/patent/CN100389420C">CN 100389420 C</a>: Method and apparatus for accelerating file system operation by using a coprocessor (<span lang="zh-Hans">用协处理器加速文件系统操作的方法及装置</span>)
+        <span class="meta">Filed 2005 · granted 21 May 2008 · Vimicro</span>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="roles">
+    <h2 id="roles">Roles</h2>
+    <ul class="list">
+      <li><strong>Chipchain Technologies</strong><span class="meta">Co-Founder &amp; CEO</span></li>
+      <li><strong>MicroBT (WhatsMiner)</strong><span class="meta">Founding Member &amp; Director</span></li>
+      <li><strong>Zeeis Technologies</strong><span class="meta">Founder &amp; President</span></li>
+      <li><strong>Vimicro (NASDAQ: VIMC)</strong><span class="meta">R&amp;D Manager</span></li>
+      <li><strong>Q-Net Technologies (OTCBB: QNNT)</strong><span class="meta">Principal Engineer</span></li>
+    </ul>
+    <p>Member of the Xingguang team awarded the National Science and Technology Progress Award, First Prize. Certified Entrepreneurship Mentor and Lecturer, ByteDance Group / Toutiao Creator Space (2020).</p>
+  </section>
+
+  <section aria-labelledby="elsewhere">
+    <h2 id="elsewhere">Elsewhere</h2>
+    <ul class="list">
+      <li><a href="https://tanshuai.com/" rel="me">tanshuai.com</a><span class="meta">every post, work, press kit and gallery</span></li>
+      <li><a href="https://www.tanshuai.net/" rel="me" hreflang="zh-Hans">tanshuai.net</a><span class="meta">the Simplified Chinese mirror for mainland China</span></li>
+      <li><a href="https://tanshuai.vercel.app/" rel="me">tanshuai.vercel.app</a><span class="meta">official links and contact</span></li>
+      <li><a href="https://tanshuai.netlify.app/" rel="me" hreflang="zh-Hans">tanshuai.netlify.app</a><span class="meta"><span lang="zh-Hans">中文简介</span>, a profile in Chinese</span></li>
+      <li><a href="https://github.com/tanshuai" rel="me">github.com/tanshuai</a><span class="meta">code</span></li>
+      <li><a href="https://x.com/tanshuai" rel="me">x.com/tanshuai</a></li>
+      <li><a href="https://www.linkedin.com/in/tanshuai" rel="me">linkedin.com/in/tanshuai</a></li>
+      <li><a href="mailto:i@tanshuai.com">i@tanshuai.com</a></li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>Updated <time datetime="2026-10-22">22 October 2026</time>. This page's source is <a href="https://github.com/tanshuai/tanshuai.github.io">github.com/tanshuai/tanshuai.github.io</a>.</p>
+</footer>
+</div>
 </body>
 </html>

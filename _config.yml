@@ -1,0 +1,12 @@
+# GitHub Pages builds this repository with Jekyll and publishes the result as
+# tanshuai.github.io. Only the root page set belongs there: sites/ holds the
+# Vercel and Netlify sites, which deploy from their own folders and must not be
+# published here a second time. Every HTML file here has no front matter, so
+# Jekyll copies it as it is.
+exclude:
+  - sites
+  - scripts
+  - README.md
+  - CLAUDE.md
+  - vercel.json
+  - netlify.toml
